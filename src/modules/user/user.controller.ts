@@ -1,9 +1,8 @@
 import httpStatus from "http-status";
-import type { NextFunction, Request, RequestHandler, Response } from "express";
+import type { NextFunction, Request, Response } from "express";
 import { userService } from "./user.service";
 import { catchAsync } from "../../utility/catchAsync";
 import { sendResponse } from "../../utility/sendResponse";
-
 
 const createUser = catchAsync(async (req: Request, res: Response, next : NextFunction) => {
     const user = await userService.registerUserToDB(req.body);
@@ -14,7 +13,6 @@ const createUser = catchAsync(async (req: Request, res: Response, next : NextFun
         data : { user },
     })
 });
-
 
 export const userController = {
     createUser,
